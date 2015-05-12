@@ -1,15 +1,24 @@
 # minimal-dropper
-This project is an attempt to make the most minimal portable dropper.
+This project is an attempt to make the most minimal portable dropper and try to see how can we counter it.
 
 ## Features ##
-* No CRT/STL/GCC/bloatthing libs included. 
-* Portable (Windows support soon)
-* Can download file and make it run without writing it in the memory. (a sort of RunPE universal method)
-* Encryption support on the fly?
-
-## Current status ##
-A lot of features listed are not ready or even in progress, so consider it as a TODO list more than Features list. :D
-There is a minimal linux binary (460 bytes for a simple printf "Hey!", I don't know if this is the best I can do!)
-I plan to add heap allocation (`malloc` and `free`), and `FILE*` stream-like interface.
-After that, implement a simple download operation using the interface.
-Then, either write the binary on the disk or fork/execute it from the memory.
+* [x] Ability to use libc functions dynamically (dlopen & dlsym).
+* [ ] Silent crash without any `exit` / `ExitProcess` function. (Really hard :D).
+* [ ] Portability: 
+    * [x] BSD
+    * [x] Linux 
+    * [ ] OS X 
+    * [ ] Windows
+* [ ] Minimal linkage:
+    * [ ] libc removed
+    * [ ] CRT removed
+    * [ ] system libs removed
+    * [ ] misc
+* [ ] Anti-detection measures:
+    * [ ] Memory encryption (website target & payload content)
+    * [ ] Anti-forensic (no disk write)
+    * [ ] Anti-hook (detect tampered functions)
+    * [ ] Anti-signature (dynamic code generation based on various parameters)
+* [ ] Optionals micro-libs to download over the initialization of the program (like micro plugins)
+* [ ] Start the payload without writing it on the disk using some obscure ways (RunPE style)
+* Size as now: 8 Kib
